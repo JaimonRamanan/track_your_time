@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:track_your_time/01_presentation/widgets/text_widget.dart';
 import 'package:track_your_time/01_presentation/widgets/button_widget.dart';
 
-import '../../03_domain/task/models/task.dart';
+import '../widgets/constants.dart';
+import '../widgets/text_field_widget.dart';
 import '../../02_application/task/task_provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
@@ -26,28 +30,33 @@ class AddTaskScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(
-              data: "Title",
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
+            sizedx10h,
+            TextFieldWidget(
+              label: "Task",
+              hint: "Enter task title",
+              controller: TextEditingController(),
             ),
-            const TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Colors.greenAccent),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Colors.greenAccent),
-                ),
-              ),
+            sizedx10h,
+            TextFieldWidget(
+              label: "Estimate",
+              hint: "Enter estimate time",
+              onTap: () async {
+                Duration? duration = await showDurationPicker(
+                  context: context,
+                  initialTime: Duration.zero,
+                );
+                log("$duration", name: "Duration");
+              },
+              controller: TextEditingController(),
             ),
+            sizedx40h,
             ButtonWidget(
               text: "Add",
               onTap: () {
                 context.read<TaskProvider>().addTask(taskName: 'First task');
                 Navigator.pop(context);
               },
-            )
+            ),
           ],
         ),
       ),

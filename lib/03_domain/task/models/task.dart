@@ -10,6 +10,7 @@ class Task with _$Task {
     required String title,
     required DateTime dateTime,
     required Duration duration,
+    required Duration estimate,
   }) = _DataClass;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);

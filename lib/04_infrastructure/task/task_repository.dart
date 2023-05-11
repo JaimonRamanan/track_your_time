@@ -10,11 +10,12 @@ class TaskRepository implements ITaskRepo {
   Task? addTask({required String taskName}) {
     log("Add task here", name: "Clicked");
     return Task(
-                        id: 1,
-                        title: 'First task',
-                        dateTime: DateTime.now(),
-                        duration: Duration.zero,
-                      );
+      id: 1,
+      title: 'First task',
+      dateTime: DateTime.now(),
+      duration: Duration.zero,
+      estimate: Duration.zero,
+    );
   }
 
   @override

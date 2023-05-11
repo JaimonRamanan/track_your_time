@@ -24,6 +24,7 @@ mixin _$Task {
   String get title => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
+  Duration get estimate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,12 @@ abstract class $TaskCopyWith<$Res> {
   factory $TaskCopyWith(Task value, $Res Function(Task) then) =
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
-  $Res call({int id, String title, DateTime dateTime, Duration duration});
+  $Res call(
+      {int id,
+      String title,
+      DateTime dateTime,
+      Duration duration,
+      Duration estimate});
 }
 
 /// @nodoc
@@ -55,6 +61,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? title = null,
     Object? dateTime = null,
     Object? duration = null,
+    Object? estimate = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,6 +80,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      estimate: null == estimate
+          ? _value.estimate
+          : estimate // ignore: cast_nullable_to_non_nullable
+              as Duration,
     ) as $Val);
   }
 }
@@ -84,7 +95,12 @@ abstract class _$$_DataClassCopyWith<$Res> implements $TaskCopyWith<$Res> {
       __$$_DataClassCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, DateTime dateTime, Duration duration});
+  $Res call(
+      {int id,
+      String title,
+      DateTime dateTime,
+      Duration duration,
+      Duration estimate});
 }
 
 /// @nodoc
@@ -102,6 +118,7 @@ class __$$_DataClassCopyWithImpl<$Res>
     Object? title = null,
     Object? dateTime = null,
     Object? duration = null,
+    Object? estimate = null,
   }) {
     return _then(_$_DataClass(
       id: null == id
@@ -120,6 +137,10 @@ class __$$_DataClassCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      estimate: null == estimate
+          ? _value.estimate
+          : estimate // ignore: cast_nullable_to_non_nullable
+              as Duration,
     ));
   }
 }
@@ -131,7 +152,8 @@ class _$_DataClass implements _DataClass {
       {required this.id,
       required this.title,
       required this.dateTime,
-      required this.duration});
+      required this.duration,
+      required this.estimate});
 
   factory _$_DataClass.fromJson(Map<String, dynamic> json) =>
       _$$_DataClassFromJson(json);
@@ -144,10 +166,12 @@ class _$_DataClass implements _DataClass {
   final DateTime dateTime;
   @override
   final Duration duration;
+  @override
+  final Duration estimate;
 
   @override
   String toString() {
-    return 'Task(id: $id, title: $title, dateTime: $dateTime, duration: $duration)';
+    return 'Task(id: $id, title: $title, dateTime: $dateTime, duration: $duration, estimate: $estimate)';
   }
 
   @override
@@ -160,12 +184,15 @@ class _$_DataClass implements _DataClass {
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.duration, duration) ||
-                other.duration == duration));
+                other.duration == duration) &&
+            (identical(other.estimate, estimate) ||
+                other.estimate == estimate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, dateTime, duration);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, dateTime, duration, estimate);
 
   @JsonKey(ignore: true)
   @override
@@ -186,7 +213,8 @@ abstract class _DataClass implements Task {
       {required final int id,
       required final String title,
       required final DateTime dateTime,
-      required final Duration duration}) = _$_DataClass;
+      required final Duration duration,
+      required final Duration estimate}) = _$_DataClass;
 
   factory _DataClass.fromJson(Map<String, dynamic> json) =
       _$_DataClass.fromJson;
@@ -199,6 +227,8 @@ abstract class _DataClass implements Task {
   DateTime get dateTime;
   @override
   Duration get duration;
+  @override
+  Duration get estimate;
   @override
   @JsonKey(ignore: true)
   _$$_DataClassCopyWith<_$_DataClass> get copyWith =>

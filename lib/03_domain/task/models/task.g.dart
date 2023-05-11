@@ -11,6 +11,7 @@ _$_DataClass _$$_DataClassFromJson(Map<String, dynamic> json) => _$_DataClass(
       title: json['title'] as String,
       dateTime: DateTime.parse(json['dateTime'] as String),
       duration: Duration(microseconds: json['duration'] as int),
+      estimate: Duration(microseconds: json['estimate'] as int),
     );
 
 Map<String, dynamic> _$$_DataClassToJson(_$_DataClass instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$_DataClassToJson(_$_DataClass instance) =>
       'title': instance.title,
       'dateTime': instance.dateTime.toIso8601String(),
       'duration': instance.duration.inMicroseconds,
+      'estimate': instance.estimate.inMicroseconds,
     };

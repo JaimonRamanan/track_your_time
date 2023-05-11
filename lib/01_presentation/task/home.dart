@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:track_your_time/core/route/route_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:track_your_time/core/route/route_names.dart';
+import 'package:track_your_time/01_presentation/widgets/constants.dart';
 import 'package:track_your_time/02_application/task/task_provider.dart';
 import 'package:track_your_time/01_presentation/widgets/text_widget.dart';
 import 'package:track_your_time/01_presentation/widgets/button_widget.dart';
@@ -43,7 +44,9 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 14.sp,
                         data: "Trace your time here!",
                       ),
+                      sizedx20h,
                       ButtonWidget(
+                        width: 160.sp,
                         text: "Add Task",
                         onTap: () {},
                       ),
