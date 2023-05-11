@@ -3,11 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:track_your_time/01_presentation/task/home.dart';
 import 'package:track_your_time/02_application/task/task_provider.dart';
+import 'package:track_your_time/03_domain/core/di/injection.dart';
 
 import 'core/utils/theme.dart';
 import 'core/route/router.dart';
 
-void main() {
+void main() async {
+  await configureDependancies();
   runApp(const MyApp());
 }
 
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<TaskProvider>(create: (_) => TaskProvider()),
+        ChangeNotifierProvider<TaskProvider>(
+          create: (_) => getIt<TaskProvider>(),
+        ),
       ],
       child: ScreenUtilInit(
         minTextAdapt: true,
