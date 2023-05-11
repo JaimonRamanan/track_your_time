@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
 class Themes {
-  ThemeData light = ThemeData(
+  static ThemeData light = ThemeData(
     colorScheme: const ColorScheme.light(
-      primary: Color(0x4d4dffff),
-      secondary: Color(0xffffff80),
+      primary: Color(0xff4d4dff),
+      secondary: Color.fromARGB(255, 77, 175, 255),
       background: Colors.white,
     ),
     buttonTheme: const ButtonThemeData(
-      buttonColor: Color(0xffffff80),
+      buttonColor: Color(0xff4d4dff),
     ),
+    focusColor: Colors.black,
   );
-  ThemeData dark = ThemeData(
+  static ThemeData dark = ThemeData(
     colorScheme: const ColorScheme.light(
-      primary: Color(0x4d4dffff),
-      secondary: Color(0xffffff80),
+      primary: Color(0xff4d4dff),
+      secondary: Color.fromARGB(255, 77, 175, 255),
       background: Colors.black12,
     ),
     buttonTheme: const ButtonThemeData(
-      buttonColor: Color(0xffffff80),
+      buttonColor: Color(0xff4d4dff),
     ),
+    focusColor: Colors.white,
   );
 }
