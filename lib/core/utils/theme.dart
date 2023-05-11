@@ -7,7 +7,9 @@ class Themes {
       secondary: Color(0xffffff80),
       background: Colors.white,
     ),
-    buttonTheme: const ButtonThemeData(buttonColor: Color(0xffffff80)),
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Color(0xffffff80),
+    ),
   );
   ThemeData dark = ThemeData(
     colorScheme: const ColorScheme.light(
@@ -15,6 +17,8 @@ class Themes {
       secondary: Color(0xffffff80),
       background: Colors.black12,
     ),
-    buttonTheme: const ButtonThemeData(buttonColor: Color(0xffffff80)),
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Color(0xffffff80),
+    ),
   );
 }
