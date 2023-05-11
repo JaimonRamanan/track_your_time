@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:track_your_time/01_presentation/widgets/text_widget.dart';
 import 'package:track_your_time/01_presentation/widgets/button_widget.dart';
 
+import '../../03_domain/task/models/task.dart';
 import '../../02_application/task/task_provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
@@ -41,10 +42,12 @@ class AddTaskScreen extends StatelessWidget {
               ),
             ),
             ButtonWidget(
-                text: "Add",
-                onTap: () {
-                  context.read<TaskProvider>().addTask(task: null);
-                })
+              text: "Add",
+              onTap: () {
+                context.read<TaskProvider>().addTask(taskName: 'First task');
+                Navigator.pop(context);
+              },
+            )
           ],
         ),
       ),

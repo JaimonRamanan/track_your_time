@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,8 +13,12 @@ class TaskProvider extends ChangeNotifier {
 
   TaskProvider(this.iTaskRepo);
 
-  void addTask({required Task? task}) {
-    iTaskRepo.addTask();
+  void addTask({required String taskName}) {
+    Task? task = iTaskRepo.addTask(taskName: taskName);
+    if (task != null) {
+      log("$task", name: "task is");
+      tasks.insert(0, task);
+    }
     notifyListeners();
   }
 }

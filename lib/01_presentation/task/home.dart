@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:track_your_time/core/route/route_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:track_your_time/02_application/task/task_provider.dart';
 import 'package:track_your_time/01_presentation/widgets/text_widget.dart';
 import 'package:track_your_time/01_presentation/widgets/button_widget.dart';
 
@@ -9,6 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = context.watch<TaskProvider>();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -28,23 +31,30 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextWidget(
-              fontSize: 14.sp,
-              data: "Trace your time here!",
+      body: provider.tasks.isEmpty
+          ? Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextWidget(
+                    fontSize: 14.sp,
+                    data: "Trace your time here!",
+                  ),
+                  ButtonWidget(
+                    text: "Add Task",
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            )
+          : ListView.builder(
+              itemCount: provider.tasks.length,
+              itemBuilder: (context, index) {
+                return Text(provider.tasks[index].title);
+              },
             ),
-            ButtonWidget(
-              text: "Add Task",
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, RouteNames.addTaskPage);
