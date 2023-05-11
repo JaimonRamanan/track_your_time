@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track_your_time/core/route/route_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:track_your_time/01_presentation/widgets/text_widget.dart';
 import 'package:track_your_time/01_presentation/widgets/button_widget.dart';
@@ -37,14 +38,16 @@ class HomeScreen extends StatelessWidget {
               fontSize: 14.sp,
               data: "Trace your time here!",
             ),
-            ButtonWidget(text: "Add Task", onTap: () {}),
+            ButtonWidget(
+              text: "Add Task",
+              onTap: () {},
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO
-          // Add tasks here
+          Navigator.pushNamed(context, RouteNames.addTaskPage);
         },
         child: const Icon(
           Icons.add,
