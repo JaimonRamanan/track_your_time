@@ -8,6 +8,8 @@ import 'package:track_your_time/03_domain/core/di/injection.dart';
 import 'core/utils/theme.dart';
 import 'core/route/router.dart';
 
+// **********  Flutter version :: 3.7.3 **********
+
 void main() async {
   await configureDependancies();
   runApp(const MyApp());
