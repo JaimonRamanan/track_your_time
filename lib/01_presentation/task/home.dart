@@ -11,7 +11,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = context.watch<TaskProvider>();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -31,30 +30,34 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: provider.tasks.isEmpty
-          ? Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextWidget(
-                    fontSize: 14.sp,
-                    data: "Trace your time here!",
+      body: Consumer<TaskProvider>(
+        builder: (BuildContext context, taskProvider, Widget? child) {
+          return taskProvider.tasks.isEmpty
+              ? Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextWidget(
+                        fontSize: 14.sp,
+                        data: "Trace your time here!",
+                      ),
+                      ButtonWidget(
+                        text: "Add Task",
+                        onTap: () {},
+                      ),
+                    ],
                   ),
-                  ButtonWidget(
-                    text: "Add Task",
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            )
-          : ListView.builder(
-              itemCount: provider.tasks.length,
-              itemBuilder: (context, index) {
-                return Text(provider.tasks[index].title);
-              },
-            ),
+                )
+              : ListView.builder(
+                  itemCount: taskProvider.tasks.length,
+                  itemBuilder: (context, index) {
+                    return Text(taskProvider.tasks[index].title);
+                  },
+                );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, RouteNames.addTaskPage);
