@@ -56,7 +56,40 @@ class HomeScreen extends StatelessWidget {
               : ListView.builder(
                   itemCount: taskProvider.tasks.length,
                   itemBuilder: (context, index) {
-                    return Text(taskProvider.tasks[index].title);
+                    return Card(
+                      child: ListTile(
+                        title: TextWidget(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                          data: taskProvider.tasks[index].title,
+                        ),
+                        subtitle: TextWidget(
+                          maxLines: 2,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w400,
+                          data: taskProvider.tasks[index].title,
+                        ),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const TextWidget(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w500,
+                              data: "1h 20m.",
+                            ),
+                            sizedx10w,
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.play_circle_filled_outlined,
+                                size: 25.sp,
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
                   },
                 );
         },

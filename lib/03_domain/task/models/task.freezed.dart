@@ -21,7 +21,9 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Task {
   int get id => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  Status get status => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
   Duration get estimate => throw _privateConstructorUsedError;
@@ -38,7 +40,9 @@ abstract class $TaskCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      String? description,
       String title,
+      Status status,
       DateTime dateTime,
       Duration duration,
       Duration estimate});
@@ -58,7 +62,9 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
   @override
   $Res call({
     Object? id = null,
+    Object? description = freezed,
     Object? title = null,
+    Object? status = null,
     Object? dateTime = null,
     Object? duration = null,
     Object? estimate = null,
@@ -68,10 +74,18 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -97,7 +111,9 @@ abstract class _$$_DataClassCopyWith<$Res> implements $TaskCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      String? description,
       String title,
+      Status status,
       DateTime dateTime,
       Duration duration,
       Duration estimate});
@@ -115,7 +131,9 @@ class __$$_DataClassCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? description = freezed,
     Object? title = null,
+    Object? status = null,
     Object? dateTime = null,
     Object? duration = null,
     Object? estimate = null,
@@ -125,10 +143,18 @@ class __$$_DataClassCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -150,7 +176,9 @@ class __$$_DataClassCopyWithImpl<$Res>
 class _$_DataClass implements _DataClass {
   const _$_DataClass(
       {required this.id,
+      this.description,
       required this.title,
+      required this.status,
       required this.dateTime,
       required this.duration,
       required this.estimate});
@@ -161,7 +189,11 @@ class _$_DataClass implements _DataClass {
   @override
   final int id;
   @override
+  final String? description;
+  @override
   final String title;
+  @override
+  final Status status;
   @override
   final DateTime dateTime;
   @override
@@ -171,7 +203,7 @@ class _$_DataClass implements _DataClass {
 
   @override
   String toString() {
-    return 'Task(id: $id, title: $title, dateTime: $dateTime, duration: $duration, estimate: $estimate)';
+    return 'Task(id: $id, description: $description, title: $title, status: $status, dateTime: $dateTime, duration: $duration, estimate: $estimate)';
   }
 
   @override
@@ -180,7 +212,10 @@ class _$_DataClass implements _DataClass {
         (other.runtimeType == runtimeType &&
             other is _$_DataClass &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.duration, duration) ||
@@ -191,8 +226,8 @@ class _$_DataClass implements _DataClass {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, dateTime, duration, estimate);
+  int get hashCode => Object.hash(runtimeType, id, description, title, status,
+      dateTime, duration, estimate);
 
   @JsonKey(ignore: true)
   @override
@@ -211,7 +246,9 @@ class _$_DataClass implements _DataClass {
 abstract class _DataClass implements Task {
   const factory _DataClass(
       {required final int id,
+      final String? description,
       required final String title,
+      required final Status status,
       required final DateTime dateTime,
       required final Duration duration,
       required final Duration estimate}) = _$_DataClass;
@@ -222,7 +259,11 @@ abstract class _DataClass implements Task {
   @override
   int get id;
   @override
+  String? get description;
+  @override
   String get title;
+  @override
+  Status get status;
   @override
   DateTime get dateTime;
   @override

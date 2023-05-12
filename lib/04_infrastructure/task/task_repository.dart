@@ -7,11 +7,13 @@ import 'package:track_your_time/03_domain/task/models/task.dart';
 @LazySingleton(as: ITaskRepo)
 class TaskRepository implements ITaskRepo {
   @override
-  Task? addTask({required String taskName}) {
+  Task? addTask({required String taskName, required String description}) {
     log("Add task here", name: "Clicked");
     return Task(
       id: 1,
-      title: 'First task',
+      title: taskName,
+      description: description,
+      status: Status.pending,
       dateTime: DateTime.now(),
       duration: Duration.zero,
       estimate: Duration.zero,

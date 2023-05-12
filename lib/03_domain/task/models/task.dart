@@ -7,7 +7,9 @@ part 'task.freezed.dart';
 class Task with _$Task {
   const factory Task({
     required int id,
+    String? description,
     required String title,
+    required Status status,
     required DateTime dateTime,
     required Duration duration,
     required Duration estimate,
@@ -15,3 +17,5 @@ class Task with _$Task {
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
 }
+
+enum Status { pending, progress, completed }

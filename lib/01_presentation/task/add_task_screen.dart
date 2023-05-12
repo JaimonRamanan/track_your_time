@@ -53,7 +53,10 @@ class AddTaskScreen extends StatelessWidget {
             ButtonWidget(
               text: "Add",
               onTap: () {
-                context.read<TaskProvider>().addTask(taskName: 'First task');
+                context.read<TaskProvider>().addTask(
+                      taskName: 'First task',
+                      description: "This is the Description for this task",
+                    );
                 Navigator.pop(context);
               },
             ),

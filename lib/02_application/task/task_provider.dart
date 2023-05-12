@@ -13,8 +13,9 @@ class TaskProvider extends ChangeNotifier {
 
   TaskProvider(this.iTaskRepo);
 
-  void addTask({required String taskName}) {
-    Task? task = iTaskRepo.addTask(taskName: taskName);
+  void addTask({required String taskName, required String description}) {
+    Task? task =
+        iTaskRepo.addTask(taskName: taskName, description: description);
     if (task != null) {
       log("$task", name: "task is");
       tasks.insert(0, task);
