@@ -54,6 +54,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 )
               : ListView.builder(
+                  padding: const EdgeInsets.all(15.0),
                   itemCount: taskProvider.tasks.length,
                   itemBuilder: (context, index) {
                     return Card(
