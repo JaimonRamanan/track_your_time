@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -12,6 +13,24 @@ class TaskProvider extends ChangeNotifier {
   final List<Task> tasks = <Task>[];
 
   TaskProvider(this.iTaskRepo);
+
+  late Timer _timer;
+
+  void startTimer({required int index}) {
+    tasks[index] = tasks[index].copyWith(isActive: !tasks[index].isActive);
+    notifyListeners();
+    if (tasks[index].isActive) {
+      _timer.cancel();
+
+      notifyListeners();
+    } else {
+      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        Duration duration = tasks[index].duration + const Duration(seconds: 1);
+        tasks[index] = tasks[index].copyWith(duration: duration);
+        notifyListeners();
+      });
+    }
+  }
 
   void addTask({required String taskName, required String description}) {
     Task? task =

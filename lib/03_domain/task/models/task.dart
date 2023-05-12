@@ -10,6 +10,7 @@ class Task with _$Task {
     String? description,
     required String title,
     required Status status,
+    required bool isActive,
     required DateTime dateTime,
     required Duration duration,
     required Duration estimate,

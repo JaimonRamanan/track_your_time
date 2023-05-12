@@ -11,6 +11,7 @@ class TaskRepository implements ITaskRepo {
     log("Add task here", name: "Clicked");
     return Task(
       id: 1,
+      isActive: false,
       title: taskName,
       description: description,
       status: Status.pending,

@@ -73,16 +73,21 @@ class HomeScreen extends StatelessWidget {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const TextWidget(
+                            TextWidget(
                               fontSize: 18.0,
                               fontWeight: FontWeight.w500,
-                              data: "1h 20m.",
+                              data:
+                                  "${taskProvider.tasks[index].duration.inHours}h ${taskProvider.tasks[index].duration.inMinutes}m ${taskProvider.tasks[index].duration.inSeconds}s",
                             ),
                             sizedx10w,
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                taskProvider.startTimer(index: index);
+                              },
                               icon: Icon(
-                                Icons.play_circle_filled_outlined,
+                                taskProvider.tasks[index].isActive
+                                    ? Icons.pause_circle_filled_outlined
+                                    : Icons.play_circle_filled_outlined,
                                 size: 25.sp,
                                 color: Theme.of(context).colorScheme.secondary,
                               ),

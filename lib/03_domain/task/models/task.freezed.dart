@@ -24,6 +24,7 @@ mixin _$Task {
   String? get description => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
+  bool get isActive => throw _privateConstructorUsedError;
   DateTime get dateTime => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
   Duration get estimate => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $TaskCopyWith<$Res> {
       String? description,
       String title,
       Status status,
+      bool isActive,
       DateTime dateTime,
       Duration duration,
       Duration estimate});
@@ -65,6 +67,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? description = freezed,
     Object? title = null,
     Object? status = null,
+    Object? isActive = null,
     Object? dateTime = null,
     Object? duration = null,
     Object? estimate = null,
@@ -86,6 +89,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -114,6 +121,7 @@ abstract class _$$_DataClassCopyWith<$Res> implements $TaskCopyWith<$Res> {
       String? description,
       String title,
       Status status,
+      bool isActive,
       DateTime dateTime,
       Duration duration,
       Duration estimate});
@@ -134,6 +142,7 @@ class __$$_DataClassCopyWithImpl<$Res>
     Object? description = freezed,
     Object? title = null,
     Object? status = null,
+    Object? isActive = null,
     Object? dateTime = null,
     Object? duration = null,
     Object? estimate = null,
@@ -155,6 +164,10 @@ class __$$_DataClassCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
       dateTime: null == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -179,6 +192,7 @@ class _$_DataClass implements _DataClass {
       this.description,
       required this.title,
       required this.status,
+      required this.isActive,
       required this.dateTime,
       required this.duration,
       required this.estimate});
@@ -195,6 +209,8 @@ class _$_DataClass implements _DataClass {
   @override
   final Status status;
   @override
+  final bool isActive;
+  @override
   final DateTime dateTime;
   @override
   final Duration duration;
@@ -203,7 +219,7 @@ class _$_DataClass implements _DataClass {
 
   @override
   String toString() {
-    return 'Task(id: $id, description: $description, title: $title, status: $status, dateTime: $dateTime, duration: $duration, estimate: $estimate)';
+    return 'Task(id: $id, description: $description, title: $title, status: $status, isActive: $isActive, dateTime: $dateTime, duration: $duration, estimate: $estimate)';
   }
 
   @override
@@ -216,6 +232,8 @@ class _$_DataClass implements _DataClass {
                 other.description == description) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.duration, duration) ||
@@ -227,7 +245,7 @@ class _$_DataClass implements _DataClass {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, description, title, status,
-      dateTime, duration, estimate);
+      isActive, dateTime, duration, estimate);
 
   @JsonKey(ignore: true)
   @override
@@ -249,6 +267,7 @@ abstract class _DataClass implements Task {
       final String? description,
       required final String title,
       required final Status status,
+      required final bool isActive,
       required final DateTime dateTime,
       required final Duration duration,
       required final Duration estimate}) = _$_DataClass;
@@ -264,6 +283,8 @@ abstract class _DataClass implements Task {
   String get title;
   @override
   Status get status;
+  @override
+  bool get isActive;
   @override
   DateTime get dateTime;
   @override
