@@ -14,22 +14,31 @@ class TaskProvider extends ChangeNotifier {
 
   TaskProvider(this.iTaskRepo);
 
-  late Timer _timer;
+  Timer? _timer;
 
   void startTimer({required int index}) {
-    tasks[index] = tasks[index].copyWith(isActive: !tasks[index].isActive);
-    notifyListeners();
-    if (tasks[index].isActive) {
-      _timer.cancel();
-
-      notifyListeners();
-    } else {
-      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        Duration duration = tasks[index].duration + const Duration(seconds: 1);
-        tasks[index] = tasks[index].copyWith(duration: duration);
+    if (_timer?.isActive ?? false) {
+      int i = tasks.indexWhere((task) => task.isActive == true);
+      _timer?.cancel();
+      if (index == i || i != -1) {
+        tasks[i] = tasks[i].copyWith(isActive: false);
         notifyListeners();
-      });
+      }
+      if (index != i) {
+        getTimer(index: index);
+      }
+    } else {
+      getTimer(index: index);
     }
+  }
+
+  void getTimer({required int index}) {
+    tasks[index] = tasks[index].copyWith(isActive: !tasks[index].isActive);
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      Duration duration = tasks[index].duration + const Duration(seconds: 1);
+      tasks[index] = tasks[index].copyWith(duration: duration);
+      notifyListeners();
+    });
   }
 
   void addTask({required String taskName, required String description}) {
