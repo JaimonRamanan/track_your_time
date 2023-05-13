@@ -17,17 +17,16 @@ class TaskProvider extends ChangeNotifier {
   Timer? _timer;
 
   void startTimer({required int index}) {
+    int i = -1;
     if (_timer?.isActive ?? false) {
-      int i = tasks.indexWhere((task) => task.isActive == true);
+      i = tasks.indexWhere((task) => task.isActive == true);
       _timer?.cancel();
       if (index == i || i != -1) {
         tasks[i] = tasks[i].copyWith(isActive: false);
         notifyListeners();
       }
-      if (index != i) {
-        getTimer(index: index);
-      }
-    } else {
+    }
+    if (index != i) {
       getTimer(index: index);
     }
   }
